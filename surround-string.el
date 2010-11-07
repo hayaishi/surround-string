@@ -35,10 +35,10 @@
 (defun mark-text-object ()
   (interactive)
   (let* ((current-point (point))
-         (begin (if (re-search-backward " \\|\n")
+         (begin (if (re-search-backward " \\|\n" nil 1)
                     (goto-char (+ (point) 1))
                   (point-min)))
-         (end (if (re-search-forward " \\|\n")
+         (end (if (re-search-forward " \\|\n" nil 1)
                     (goto-char (- (point) 1))
                 (point-max))))
     (progn
