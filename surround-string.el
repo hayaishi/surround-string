@@ -1,5 +1,5 @@
 ;-*- Emacs-Lisp -*-
-
+(require 'cl)
 (defun surround-string (surround-string)
   (interactive)
   (lexical-let* ((surround-list (split-string surround-string "|"))
@@ -30,7 +30,7 @@
             (delete-region begin end)
             (goto-char begin)
             (insert select-string)))
-        (goto-char (+ end (- (point-max) befor-point-max)))))))
+        (goto-char (+ end (- (point-max) befor-point-max (length end-string))))))))
 
 (defun mark-text-object ()
   (interactive)
